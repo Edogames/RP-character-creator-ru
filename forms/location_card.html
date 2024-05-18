@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <form id="char-form">
+            <div class="form-block" id="style"></div>
+            <div class="form-block">
+                <label for="name">Название</label><br>
+                <input required type="text" name="name" id="name">
+            </div>
+            <div class="form-block">
+                <label for="type">Тип локации</label><br>
+                <select name="type" id="type" onchange="typeChange()">
+                    <option value="0" selected>Выберите тип локации!</option>
+                    <option value="Планета">Планета</option>
+                    <option value="1">Город</option>
+                    <option value="1">Деревня</option>
+                </select>
+            </div>
+            <div id="form-fields"></div>
+
+            <button type="submit">Копировать</button>
+        </form>
+
+        <textarea id="dummy" style="display: none;"></textarea>
+
+        <script>
+            let values={};
+
+            function typeChange(){
+                const formFields = {
+                    "0" : "<div></div>",
+                    "Планета" : `<div>
+                        <div class="form-block">
+                            <label for="id">Айди вселенной</label><br>
+                            <input required type="number" name="id" id="id">
+                        </div>
+                    </div>`,
+                    "1" : `<div>
+                        <div class="form-block">
+                            <label for="planet">Имя планеты</label><br>
+                            <input required type="number" name="planet" id="planet">
+                        </div>
+                    </div>`,
+                };
+                document.getElementById("form-fields").innerHTML = formFields[document.getElementById("type").value];
+            }
+
+            document.getElementById('char-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                makeAndCopy();
+            });
+            
+            function makeAndCopy(){
+                values = {
+                    "Название": document.querySelector('[name=name]').value,
+                    "Тип локации": document.querySelector('[name=type]').value,
+                    "Айди вселенной": document.querySelector('[name=id]') !== undefined && document.querySelector('[name=id]') !== null ? document.querySelector('[name=id]').value : null,
+                    "Имя планеты": document.querySelector('[name=planet]') !== undefined && document.querySelector('[name=planet]') !== null ? document.querySelector('[name=planet]').value : null,
+                };
+                PrintData(document.getElementById("dummy"), document.getElementById("mode").value);
+                return;
+            }
+        </script>
+        <script src="./forms.js"></script>
+        <script src="../script.js"></script>
+    </body>
+</html>

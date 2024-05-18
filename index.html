@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./script.js" defer></script>
+        <link rel="stylesheet" href="./style.css">
+        <title>Создание персонажа</title>
+    </head>
+    <body style="background: black;">
+        <header>
+            <div class="d-flex" style="width: 100%;">
+                <button onclick="SetForm('./forms/character_card.html')">Персонаж</button>
+                <button onclick="SetForm('./forms/universe_card.html')">Вселенная</button>
+                <button onclick="SetForm('./forms/location_card.html')">Локация</button>
+            </div>
+        </header>
+        <object id="form-object" style="overflow-y: auto; overflow-x: hidden;" data="" type="text/html"></object>
+    </body>
+</html>

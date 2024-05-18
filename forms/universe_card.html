@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <form id="char-form">
+            <div class="form-block" id="style"></div>
+            <div class="form-block">
+                <label for="name">Имя</label><br>
+                <input required type="text" name="name" id="name">
+            </div>
+            <div class="form-block">
+                <label for="id">Айди вселенной</label><br>
+                <input required type="number" name="id" id="id">
+            </div>
+            <button type="submit">Копировать</button>
+        </form>
+
+        <textarea id="dummy" style="display: none;"></textarea>
+
+        <script>
+            let values={};
+
+            document.getElementById('char-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                values = {
+                    "Имя": document.querySelector('[name=name]').value,
+                    "Айди вселенной": document.querySelector('[name=id]').value,
+                };
+                PrintData(document.getElementById("dummy"), document.getElementById("mode").value);
+            });
+        </script>
+        <script src="./forms.js"></script>
+        <script src="../script.js"></script>
+    </body>
+</html>

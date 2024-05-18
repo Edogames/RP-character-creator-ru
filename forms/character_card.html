@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <form id="char-form">
+            <div class="form-block" id="style"></div>
+            <div class="form-block">
+                <label for="name">Имя</label><br>
+                <input required type="text" name="name" id="name">
+            </div>
+            <div class="form-block">
+                <label for="gender">Пол</label><br>
+                <select name="gender" id="gender">
+                    <option value="Нету" selected>Нету</option>
+                    <option value="Женский">Женский</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Оба">Оба</option>
+                </select>
+            </div>
+            <div class="form-block">
+                <label for="race">Раса</label><br>
+                <input required type="text" name="race" id="race">
+            </div>
+            <div class="form-block">
+                <label for="universe">Вселенная/планета</label><br>
+                <input required type="text" name="universe" id="universe">
+            </div>
+            <div class="form-block">
+                <label for="inventory">Инвентарь</label><br>
+                <input required type="text" name="inventory" id="inventory">
+            </div>
+            <div class="form-block">
+                <label for="persona">Навыки/Характер</label><br>
+                <input required type="text" name="persona" id="persona">
+            </div>
+            <div class="form-block">
+                <label for="abilities">Способности</label><br>
+                <input required type="text" name="abilities" id="abilities">
+            </div>
+            <div class="form-block">
+                <label for="description">Описание</label><br>
+                <textarea name="description" id="description"></textarea>
+            </div>
+            <button type="submit">Копировать</button>
+        </form>
+
+        <textarea id="dummy" style="display: none;"></textarea>
+
+        <script>
+            let values={};
+
+            document.getElementById('char-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                values = {
+                    "Имя": document.querySelector('[name=name]').value,
+                    "Пол": document.querySelector('[name=gender]').value,
+                    "Раса"  : document.querySelector('[name=race]').value,
+                    "Вселенная/планета" : document.querySelector('[name=universe]').value,
+                    "Инвентарь" : document.querySelector('[name=inventory]').value,
+                    "Навыки/Характер" : document.querySelector('[name=persona]').value,
+                    "Способности" : document.querySelector('[name=abilities]').value,
+                    "Описание" : document.querySelector('[name=description]').value
+                };
+                PrintData(document.getElementById("dummy"), document.getElementById("mode").value);
+            });
+        </script>
+        <script src="./forms.js"></script>
+        <script src="../script.js"></script>
+    </body>
+</html>
